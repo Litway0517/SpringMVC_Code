@@ -11,6 +11,24 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/hello")
 public class RequestMappingController {
 
+
+    // 测试method参数
+    @RequestMapping(value = "/testParametersAndHeaders",
+            /*
+                表示: 以下三个条件同时满足
+                    1- 请求头必须携带username参数, 而且username的值不能是admin.
+                    2- 请求头必须携带password参数, 可以为空
+                    3- 请求头必须不能携带id参数
+             */
+            params = {"username!=admin", "password", "!id"}
+    )
+    public String testParametersAndHeaders() {
+        System.out.println("testParametersAndHeaders");
+        return "success";
+    }
+
+
+    // 测试@RequestMapping
     @RequestMapping(
             // 只要客户端的请求能够满足其中任何一个路径就能够映射到该方法来.
             value = {"/testRequestMapping", "/test"},
@@ -28,7 +46,7 @@ public class RequestMappingController {
         return "success";
     }
 
-
+    // 测试@PostMapping
     @PostMapping("/testPostMapping")
     public String testPostMapping() {
         System.out.println("testPostMapping");
@@ -36,10 +54,14 @@ public class RequestMappingController {
     }
 
 
+    // 测试put请求方式
     @RequestMapping(value = "/testPut", method = RequestMethod.PUT)
     public String testPut() {
         System.out.println("testPut");
         return "success";
     }
+
+
+
 
 }

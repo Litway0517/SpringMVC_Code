@@ -29,9 +29,15 @@
     </form>
 
     <hr>
+    <!--
+        put的请求方式 是不支持的. 会默认更改为get方式.
+    -->
     <form th:action="@{/hello/testPut}" method="put">
         <input type="submit" value="测试put请求方式"> <br>
     </form>
+
+    <hr>
+    <a th:href="@{/hello/testParametersAndHeaders?username='lit'&password='1'}" >测试params参数</a>
 
 
 
