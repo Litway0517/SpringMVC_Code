@@ -21,5 +21,19 @@
         <input type="submit" value="测试RequestMapping注解的 method 属性">
     </form>
 
+    <hr>
+    <a th:href="@{/hello/testGetMapping}" >测试GetMapping注解(仅支持get请求方式)</a> <br>
+
+    <form th:action="@{/hello/testPostMapping}" method="post">
+        <input type="submit" value="测试testPostMapping注解(仅支持post请求方式)">
+    </form>
+
+    <hr>
+    <form th:action="@{/hello/testPut}" method="put">
+        <input type="submit" value="测试put请求方式"> <br>
+    </form>
+
+
+
 </body>
 </html>
