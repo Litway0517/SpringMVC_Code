@@ -13,6 +13,39 @@ public class RequestMappingController {
 
 
     /*
+    * /c**c/testAnt : 这样会认为的是, c和c之间, 有两个任意字符.
+    * /⭐⭐/testAnt : 这样认为的是, **表示的是以层或者多层目录.
+    * */
+    @RequestMapping("/**/testAnt")
+    public String testAnt3() {
+        System.out.println("/**/testAnt");
+        return "success";
+    }
+
+
+    /*
+        * : 和?的作用差不多. 表示任意多个或者0个字符均可以.
+            ? / 这两个也不行
+     */
+    @RequestMapping(value = "/b*b/testAnt")
+    public String testAnt2() {
+        System.out.println("/b*b/testAnt");
+        return "success";
+    }
+
+    /*
+        测试ant风格的请求方式.
+        ? : 能够匹配请求路径中的任意一个字符. 但是超过一个不行(a11a不可以). 没有也不行(/aa/testAnt也不行)
+            ? / 这两个也不行
+     */
+    @RequestMapping(value = "/a?a/testAnt")
+    public String testAnt() {
+        System.out.println("/a?a/testAnt");
+        return "success";
+    }
+
+
+    /*
         header参数的使用.
         请求头中的参数 Cache-Control 必须是 no-cache. 不然会报错404.
         火狐的 禁用缓存 按钮, 勾选与不勾选就可以测试.
