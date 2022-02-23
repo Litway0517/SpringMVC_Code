@@ -12,6 +12,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class RequestMappingController {
 
 
+    /*
+        header参数的使用.
+        请求头中的参数 Cache-Control 必须是 no-cache. 不然会报错404.
+        火狐的 禁用缓存 按钮, 勾选与不勾选就可以测试.
+     */
+    @GetMapping(value = "/testParamsHeaders", headers = {"Cache-Control=no-cache"})
+    public String testParamsHeaders() {
+        System.out.println("testParamsHeaders");
+        return "success";
+    }
+
+
     // 测试method参数
     @RequestMapping(value = "/testParametersAndHeaders",
             /*
@@ -23,6 +35,7 @@ public class RequestMappingController {
             params = {"username!=admin", "password", "!id"}
     )
     public String testParametersAndHeaders() {
+
         System.out.println("testParametersAndHeaders");
         return "success";
     }
