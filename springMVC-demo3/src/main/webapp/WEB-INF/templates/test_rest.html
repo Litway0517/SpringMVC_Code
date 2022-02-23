@@ -16,11 +16,39 @@
         密码：<input type="password" name="password"><br>
         <input type="submit" value="添加"><br>
     </form>
-    <form th:action="@{/user}" method="post">
+
+    <hr>
+    模拟PUT请求和DELETE请求. form的method必须是post, 而且隐藏域携带一个_method参数, 且值为PUT. 这样就模仿了PUT请求
+    <form th:action="@{/user/1}" method="post">
+        <!-- 主要是这里面加上一个隐藏域 -->
         <input type="hidden" name="_method" value="PUT">
         用户名：<input type="text" name="username"><br>
         密码：<input type="password" name="password"><br>
         <input type="submit" value="修改"><br>
     </form>
+
+    <hr>
+    模拟PUT请求和DELETE请求. form的method必须是post, 而且隐藏域携带一个_method参数, 且值为DELETE. 这样就模仿了DELETE请求
+    <form th:action="@{/user/1}" method="post">
+        <!-- 主要是这里面加上一个隐藏域 -->
+        <input type="hidden" name="_method" value="DELETE">
+        用户名：<input type="text" name="username"><br>
+        密码：<input type="password" name="password"><br>
+        <input type="submit" value="修改"><br>
+    </form>
+
+    <hr>
+    通过超链接去控制表单的提交
+    <form id="_deleteRequest" th:action="@{/user/1}" method="post">
+        <input type="hidden" name="_method" value="DELETE">
+    </form>
+
+    <a th:onclick="deleteUser">删除id为1的用户信息</a>
+
+    <script type="text/javascript">
+        function deleteUser() {
+            $("#_deleteRequest").onsubmit;
+        }
+    </script>
 </body>
 </html>
