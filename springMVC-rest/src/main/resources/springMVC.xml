@@ -31,7 +31,11 @@
     <!-- 配置视图控制器. 使请求地址和相关界面进行映射 -->
     <mvc:view-controller path="/" view-name="index" />
 
+    <!--将默认资源的访问权限交给tomcat-->
+    <mvc:default-servlet-handler />
+
     <!--开启mvc的注解驱动-->
     <mvc:annotation-driven />
+
 
 </beans>
