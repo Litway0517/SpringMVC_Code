@@ -25,7 +25,6 @@ public class EmployeeController {
     @Autowired
     private EmployeeDao employeeDao;
 
-
     @GetMapping
     public String list(Model model) {
         Collection<Employee> employeeList = employeeDao.getAll();
@@ -39,9 +38,21 @@ public class EmployeeController {
         return "redirect:/employee";
     }
 
-
     @PostMapping
     public String addEmployee(Employee employee) {
+        employeeDao.save(employee);
+        return "redirect:/employee";
+    }
+
+    @GetMapping("/{id}")
+    public String getEmployeeById(@PathVariable("id") Integer id, Model model) {
+        Employee employee = employeeDao.get(id);
+        model.addAttribute("employee", employee);
+        return "employee_update";
+    }
+
+    @PutMapping("/update")
+    public String updateEmployee(Employee employee) {
         employeeDao.save(employee);
         return "redirect:/employee";
     }
