@@ -3,10 +3,12 @@ package com.atguigu.mvc.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+
 /**
- * Date:2021/7/7
- * Author:ybc
- * Description:
+ * 用户控制器
+ *
+ * @author DELL_
+ * @date 2022/02/24
  */
 @Controller
 public class UserController {

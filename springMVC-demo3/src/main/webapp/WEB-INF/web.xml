@@ -5,6 +5,11 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
 
+    <!--
+        中文乱码过滤器 和 获取请求方式过滤器 的顺序.
+        中文乱码必须放在在前面, 因为, 若想CharacterEncodingFilter生效, 必须不能获取任何参数, 而HiddenHttpMethodFilter
+        已经获取了_method参数, 所以会导致CharacterEncodingFilter失效. 所以CharacterEncodingFilter在前.
+    -->
 
     <filter>
         <filter-name>CharacterEncodingFilter</filter-name>
