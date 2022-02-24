@@ -52,8 +52,8 @@ public class EmployeeController {
     }
 
     @PutMapping("/update")
-    public String updateEmployee(Employee employee) {
-        employeeDao.save(employee);
-        return "redirect:/employee";
+    public String  updateEmployee(Employee employee) {
+        return this.addEmployee(employee);
+
     }
 }
