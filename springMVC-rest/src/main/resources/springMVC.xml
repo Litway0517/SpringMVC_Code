@@ -32,9 +32,19 @@
     <mvc:view-controller path="/" view-name="index" />
     <mvc:view-controller path="/toAdd" view-name="employee_add" />
 
-    <!--将默认资源的访问权限交给tomcat-->
-    <mvc:default-servlet-handler />
+    <!--
+        将默认资源的访问权限交给tomcat
+        tomcat服务器本身也有一个web.xml配置文件. 这个配置文件, 规定了由JspServlet处理jsp界面(jsp本质是servlet),
+        规定DefaultServlet处理所有路由请求. 但是此时工程的web.xml要求让DispatcherServlet来处理所有请求, 这样就找不到了
+        静态资源, 因此会报错. 就是说, 静态资源的请求再过来会请求DispatcherServlet, 但是DispatcherServlet并不知道.
+        所有报错, 需要下面这两个配置同时使用来解决.
 
+        如果仅仅配置<mvc:default-servlet-handler />, 而没有<mvc:annotation-driven />, 那么请求仍然是被DefaultServlet
+        处理的. 此时就只有静态资源能够访问, 而请求却访问不了.
+
+        简单说, 请求过来, 先使用DispatcherServlet去解决请求, 当找不到资源时, 再交由<mvc:default-servlet-handler />处理.
+    -->
+    <mvc:default-servlet-handler />
     <!--开启mvc的注解驱动-->
     <mvc:annotation-driven />
 
