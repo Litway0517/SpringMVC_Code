@@ -37,7 +37,7 @@ public class UserController {
     // 保存用户  和上面是不一样的, 因为这里是post请求. 所以能够和上面分开
     @PostMapping("/user")
     public String insertUser(String username, String password) {
-        System.out.println("用户信息保存到了数据库中...  用户名: " + username + "密码: " + password);
+        System.out.println("用户信息保存到了数据库中...  用户名: " + username + ". 密码: " + password);
         return "success";
     }
 
