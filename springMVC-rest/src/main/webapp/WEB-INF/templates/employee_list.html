@@ -6,7 +6,7 @@
 </head>
 <body>
 
-    <table border="1" cellspacing="0" cellpadding="0" style="text-align: center">
+    <table id="dataTable" border="1" cellspacing="0" cellpadding="0" style="text-align: center">
         <tr>
             <th colspan="5">Employee info</th>
         </tr>
@@ -23,11 +23,39 @@
             <th th:text="${employee.email}"></th>
             <th th:text="${employee.gender}"></th>
             <td>
-                <a href="">delete</a>
+                <!-- 两种写法 -->
+                <!--<a @click="deleteEmployee" th:href="@{/employee/}+${employee.id}" >delete</a>-->
+                <a @click="deleteEmployee" th:href="@{'/employee/'+${employee.id}}" >delete</a>
+
                 <a href="">update</a>
             </td>
         </tr>
     </table>
+
+    <!-- 模拟delete请求 -->
+    <form id="deleteForm" method="post">
+        <input type="hidden" name="_method" value="DELETE">
+    </form>
+
+    <!-- 使用vue来控制表单form的提交 -->
+    <script type="text/javascript" th:src="@{/static/js/vue.js}"></script>
+    <script type="text/javascript" >
+        let vue = new Vue({
+            el: "#dataTable",
+            methods: {
+                deleteEmployee: function (event) {
+                    let deleteForm = document.getElementById("deleteForm");
+                    // 将触发事件的超链接的href属性赋值给表单的action
+                    deleteForm.action = event.target.href;
+                    // 提交表单
+                    deleteForm.submit();
+                    // 取消超链接的默认行为
+                    event.preventDefault();
+                },
+            }
+        });
+    </script>
+
 
 </body>
 </html>
