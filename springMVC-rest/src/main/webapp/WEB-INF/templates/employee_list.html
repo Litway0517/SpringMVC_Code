@@ -15,7 +15,7 @@
             <th>lastName</th>
             <th>email</th>
             <th>gender</th>
-            <th>options</th>
+            <th>options(<a th:href="@{/toAdd}" >添加用户</a> )</th>
         </tr>
         <tr th:each="employee : ${employeeList}">
             <th th:text="${employee.id}"></th>
