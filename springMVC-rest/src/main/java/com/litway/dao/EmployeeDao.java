@@ -37,7 +37,7 @@ public class EmployeeDao {
     private static Integer initId = 1006;
 
     /**
-     * 保存
+     * 保存 和 修改员工信息.
      *
      * @param employee 员工
      */
@@ -45,6 +45,7 @@ public class EmployeeDao {
         if(employee.getId() == null){
             employee.setId(initId++);
         }
+        // 当id有值的时候, id一样, 但是实体内容不一样, 所以就是更新覆盖原来的信息.
         employees.put(employee.getId(), employee);
     }
 
