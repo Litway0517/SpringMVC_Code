@@ -12,4 +12,10 @@ public class MyViewController {
         System.out.println("testThymeleaf");
         return "success";
     }
+
+    @GetMapping("/testForward")
+    public String testForward() {
+        System.out.println("testForward");
+        return "forward:/testThymeleaf";
+    }
 }

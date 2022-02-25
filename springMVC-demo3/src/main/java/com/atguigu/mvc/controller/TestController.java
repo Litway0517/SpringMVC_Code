@@ -17,6 +17,7 @@ public class TestController {
         return "index";
     }
 
+    // 在主页访问test_view就会跳转到test_view这个界面. test_view.hmtl
     @GetMapping("/test_view")
     public String testView() {
         System.out.println("testView");
