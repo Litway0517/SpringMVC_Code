@@ -18,4 +18,10 @@ public class MyViewController {
         System.out.println("testForward");
         return "forward:/testThymeleaf";
     }
+
+    @GetMapping("/testRedirect")
+    public String testRedirect() {
+        System.out.println("testRedirect");
+        return "success";
+    }
 }
