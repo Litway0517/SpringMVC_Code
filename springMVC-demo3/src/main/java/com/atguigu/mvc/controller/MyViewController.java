@@ -22,6 +22,7 @@ public class MyViewController {
     @GetMapping("/testRedirect")
     public String testRedirect() {
         System.out.println("testRedirect");
-        return "success";
+        // 这里不是直接跳转到success界面, 需求是: 测试redirect重定向返回的是不是RedirectView视图, 而不是直接跳到界面
+        return "redirect:/testThymeleaf";
     }
 }
