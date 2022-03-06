@@ -4,6 +4,12 @@ package com.atguigu.mvc.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+/**
+ * 我视图控制器
+ *
+ * @author DELL_
+ * @date 2022/03/06
+ */
 @Controller
 public class MyViewController {
 
