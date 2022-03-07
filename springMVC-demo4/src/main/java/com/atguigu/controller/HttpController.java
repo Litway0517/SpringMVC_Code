@@ -21,6 +21,17 @@ import java.util.List;
 public class HttpController {
 
     /*
+
+     */
+    @PostMapping("/testAxios")
+    @ResponseBody
+    public String testAxios(String username, String password) {
+        System.out.println(username + ", " + password);
+        return "hello, axios~ ";
+    }
+
+
+    /*
         报错, 因为http协议下, 浏览器不知道服务器返回的是什么对象. 浏览器并不知道List<Student>是什么类型的数据.
         配置了jackson依赖时就能正常返回了
      */
@@ -47,6 +58,7 @@ public class HttpController {
     /*
         @ResponseBody注解: 在一个响应方法上标识此注解, 返回字符串时不进行跳转.
                             用于将方法的返回值作为响应报文的响应体回传到浏览器.
+                            返回值作为响应报文的响应体.
      */
     @GetMapping("/testResponseBody")
     @ResponseBody
