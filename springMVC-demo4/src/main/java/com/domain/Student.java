@@ -93,4 +93,18 @@ public class Student {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    /**
+     * 字符串
+     *
+     * @return {@link String}
+     */
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
 }
