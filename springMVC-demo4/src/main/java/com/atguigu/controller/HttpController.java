@@ -1,10 +1,14 @@
 package com.atguigu.controller;
 
 
+import com.domain.Student;
 import org.springframework.http.RequestEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -16,6 +20,18 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class HttpController {
 
+    /*
+        报错, 因为http协议下, 浏览器不知道服务器返回的是什么对象. 浏览器并不知道List<Student>是什么类型的数据.
+        配置了jackson依赖时就能正常返回了
+     */
+    @GetMapping("/testResponseBody3")
+    @ResponseBody
+    public List<Student> testResponseBody3() {
+        ArrayList<Student> students = new ArrayList<>();
+        students.add(new Student(1, "test1", "test1"));
+        students.add(new Student(2, "test2", "test2"));
+        return students;
+    }
 
 
     @GetMapping("/testResponseBody2")
