@@ -3,9 +3,8 @@ package com.atguigu.controller;
 
 import org.springframework.http.RequestEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 
 /**
@@ -16,6 +15,28 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 @Controller
 public class HttpController {
+
+
+
+    @GetMapping("/testResponseBody2")
+    @ResponseBody
+    public ModelAndView testResponseBody2() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("test1", "测试1");
+        modelAndView.addObject("test2", "测试2");
+        modelAndView.setViewName("success");
+        return modelAndView;
+    }
+
+    /*
+        @ResponseBody注解: 在一个响应方法上标识此注解, 返回字符串时不进行跳转.
+                            用于将方法的返回值作为响应报文的响应体回传到浏览器.
+     */
+    @GetMapping("/testResponseBody")
+    @ResponseBody
+    public String testResponseBody() {
+        return "success";
+    }
 
 
     /*
