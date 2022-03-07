@@ -30,6 +30,15 @@
 
     <!--
         视图控制器
+        当前的请求中, 没有任何的业务处理过程时, 仅仅是界面的跳转, 那么就可以使用  视图控制器.
+        其达到的效果就是和写了一个controller类, 然后写一个响应方法, 地址映射到另一个界面, 然后return返回界面, 一样的.
+        只不过是xml配置版本.
+
+        当浏览器访问  http://ip:port/  地址时, 就会默认跳转到index路由. 而index需要被上面的默认视图解析器解析, 得到的路径是
+        /WEB-INF/templates/index.html  因此就会跳转到相应界面.
+
+        但是当配置了这样的视图控制器时, 所有的controller类中的请求映射地址都讲失效.
+        此时必须配置  annotation-driven  注解驱动解决 请求地址失效问题. 因此, 这两个标签必须一块用.
     -->
     <mvc:view-controller path="/" view-name="index"/>
     <mvc:view-controller path="/test_view" view-name="test_view"/>
