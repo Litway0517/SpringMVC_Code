@@ -42,6 +42,7 @@
             el: "#app",
             methods: {
                 testAxios: function (event) {
+                    // 注意这个格式!　还是比较重要的.
                     axios({
                         method: "post",
                         url: event.target.href,
@@ -51,7 +52,8 @@
                         }
                     }).then(function (response) {
                         alert(response.data);
-                    }).catch(function (error) {});
+                    }).catch(function (error) {
+                    });
                     // 取消超链接事件
                     event.preventDefault();
 
